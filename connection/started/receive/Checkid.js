@@ -1,6 +1,7 @@
 var url_string = window.location.href
 var url = new URL(url_string);
 var id = url.searchParams.get("id");
+console.log(id)
 let checking_overlay=document.getElementById("checking_overlay");
 let checkingsts=document.getElementById("checkingsts");
 if (id=="" || id==null){
