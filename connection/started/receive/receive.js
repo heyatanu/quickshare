@@ -1,6 +1,6 @@
 var url_string_new = window.location.href
 var url_new = new URL(url_string_new);
-var id_new = url_new.searchParams.get("id_new");
+var id_new = url_new.searchParams.get("id");
 console.log(id_new,url_new)
 
 alert("DOME")
