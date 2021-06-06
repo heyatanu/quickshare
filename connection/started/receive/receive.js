@@ -1,7 +1,7 @@
-var url_string = window.location.href
-var url = new URL(url_string);
-var id = url.searchParams.get("id");
-console.log(id)
+var url_string_new = window.location.href
+var url_new = new URL(url_string_new);
+var id_new = url_new.searchParams.get("id_new");
+console.log(id_new)
 
 
 let remyVar;
@@ -11,7 +11,7 @@ let filearray=[];
 let fileurlarray=[];
 var d = new Date();
 let status=document.getElementById("status");
-status.innerHTML="you are connected to "+id+" via network"
+status.innerHTML="you are connected to "+id_new+" via network"
 remyVar =setInterval(function(){ 
     console.clear();
     b=false;
@@ -20,7 +20,7 @@ remyVar =setInterval(function(){
     let fileurlQ=``;
 
     
-    firebase.database().ref('session/' + id).on('value', function(snapshot) {
+    firebase.database().ref('session/' + id_new).on('value', function(snapshot) {
         if (snapshot.val() != null ) {
             if(snapshot.val().SendingFile){
                 // console.log("got SOme Msg");
@@ -60,7 +60,7 @@ remyVar =setInterval(function(){
                       </div>
                         `;
                     }
-                    firebase.database().ref('session/' + id).update({
+                    firebase.database().ref('session/' + id_new).update({
                         SendingFile:false
                     });
                 }
