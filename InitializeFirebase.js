@@ -1,4 +1,3 @@
- 
  var firebaseConfig = {
     apiKey: "AIzaSyCUb1uiML37wm0yR-7gdzU3GqiV5wtZyYc",
     authDomain: "imageuplode-98396.firebaseapp.com",
@@ -11,4 +10,4 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
+  // const db = firebase.firestore();
