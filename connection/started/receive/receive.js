@@ -1,9 +1,9 @@
 var url_string_new = window.location.href
 var url_new = new URL(url_string_new);
 var id_new = url_new.searchParams.get("id");
-console.log(id_new,url_new)
+console.log(id_new,url_new,url_new.search)
 
-alert("DOME")
+alert("DOME1")
 // let remyVar;
 // let b=false;
 // let msgarray=[];
