@@ -4,20 +4,17 @@ let msgarray=[];
 let filearray=[];
 let fileurlarray=[];
 var d = new Date();
-var url_string_new = window.location.href
-var url_new = new URL(url_string_new);
-var new_id = url_new.searchParams.get("new_id");
 let status=document.getElementById("status");
-status.innerHTML="you are connected to "+new_id+" via network"
+status.innerHTML="you are connected to "+id+" via network"
 remyVar =setInterval(function(){ 
-    // console.clear();
+    console.clear();
     b=false;
     let msgQ=``;
     let fileQ=``;
     let fileurlQ=``;
 
     
-    firebase.database().ref('session/' + new_id).on('value', function(snapshot) {
+    firebase.database().ref('session/' + id).on('value', function(snapshot) {
         if (snapshot.val() != null ) {
             if(snapshot.val().SendingFile){
                 // console.log("got SOme Msg");
@@ -57,7 +54,7 @@ remyVar =setInterval(function(){
                       </div>
                         `;
                     }
-                    firebase.database().ref('session/' + new_id).update({
+                    firebase.database().ref('session/' + id).update({
                         SendingFile:false
                     });
                 }

@@ -5,17 +5,15 @@ let file_btn_upload=document.getElementById("file_btn_upload");
 let mainprogress=document.getElementById("mainprogress");
 let uploading_overlay=document.getElementById("uploading_overlay");
 let uploadingsts=document.getElementById("uploadingsts");
-var url_string_new_s = window.location.href
-var url_n = new URL(url_string_new_s);
-var new_id_s = url_n.searchParams.get("new_id_s");
-document.getElementById("question").innerHTML="you are connected to "+new_id_s+" via network"
+
+document.getElementById("question").innerHTML="you are connected to "+id+" via network"
 
 let msg="";
 let filename="";
 let filedownloadurl="";
 let b=false;
 let clvar;
-firebase.database().ref('session/' + new_id_s).update({
+firebase.database().ref('session/' + id).update({
     Message:"",
     SendingFile:false,                    
     FileUrl:"",
@@ -29,7 +27,7 @@ else{
     b=false
     let mainmsg=(message_field.value)
     msg=msg+mainmsg+"|~|";
-    firebase.database().ref('session/' + new_id_s).update({
+    firebase.database().ref('session/' + id).update({
         Message:msg,
         SendingFile:true
     });  
@@ -67,7 +65,7 @@ document.getElementById("file_btn_upload").onclick = function() {
     uploading_overlay.style.display="block";
     firebase.database().ref('session/').once('value', function(snapshot) {
         filename=filename+files[0].name+"|~|";
-        var uploadTask = firebase.storage().ref('Files/' + new_id_s).put(files[0]);
+        var uploadTask = firebase.storage().ref('Files/' + id).put(files[0]);
         uploadTask.on('state_changed', function(snapshot) {
                 var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 progress = parseInt(progress)
@@ -83,7 +81,7 @@ document.getElementById("file_btn_upload").onclick = function() {
             function() {
                 uploadTask.snapshot.ref.getDownloadURL().then(function(url) {
                     filedownloadurl=filedownloadurl+url+"|~|";
-                    firebase.database().ref('session/' + new_id_s).update({
+                    firebase.database().ref('session/' + id).update({
                         FileUrl:filedownloadurl,
                         FileName:filename,
                         SendingFile:true
@@ -110,4 +108,4 @@ window.onbeforeunload = function () {
     return 'Are you really want to perform the action?';
 }
 
-// setTimeout(function(){console.clear();}, 5000);
+setTimeout(function(){console.clear();}, 5000);
