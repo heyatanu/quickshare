@@ -110,4 +110,4 @@ window.onbeforeunload = function () {
     return 'Are you really want to perform the action?';
 }
 
-setTimeout(function(){console.clear();}, 5000);
+// setTimeout(function(){console.clear();}, 5000);

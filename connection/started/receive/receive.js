@@ -10,7 +10,7 @@ var new_id = url_new.searchParams.get("new_id");
 let status=document.getElementById("status");
 status.innerHTML="you are connected to "+new_id+" via network"
 remyVar =setInterval(function(){ 
-    console.clear();
+    // console.clear();
     b=false;
     let msgQ=``;
     let fileQ=``;
