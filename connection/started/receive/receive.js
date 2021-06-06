@@ -3,7 +3,25 @@ var url_new = new URL(url_string_new);
 var id_new = url_new.searchParams.get("id");
 console.log(id_new,url_new,url_new.search)
 
-alert("DOME2")
+alert("DOME3")
+let checking_overlay=document.getElementById("checking_overlay");
+let checkingsts=document.getElementById("checkingsts");
+if (id_new=="" || id_new==null){
+    checkingsts.innerHTML="id not found rediracting to homepage";
+    setTimeout(function(){document.getElementById("homepage").click();},3000);
+}
+// console.log("CHECKING")
+firebase.database().ref('session/' + id_new).on('value', function(snapshot) {
+    if (snapshot.val().Id == id_new ) {
+        checking_overlay.style.display="none";
+        document.title="Receive File - "+id_new;
+
+    } else {
+        checkingsts.innerHTML="id not found rediracting to homepage";
+        
+        setTimeout(function(){document.getElementById("homepage").click();},3000);
+    }
+});
 
 let remyVar;
 let b=false;
