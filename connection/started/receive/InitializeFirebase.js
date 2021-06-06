@@ -13,11 +13,3 @@
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-
-db.collection('admin').get().then((snapshot) => {
-  let passg = (snapshot.docs[0].data().password)
-  console.log(passg)
-}).catch(err => {
-console.log("WERR")
-
-});

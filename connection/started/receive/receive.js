@@ -1,9 +1,9 @@
 var url_string_new = window.location.href
 var url_new = new URL(url_string_new);
 var id_new = url_new.searchParams.get("id");
-console.log(id_new,url_new,url_new.search)
+// console.log(id_new,url_new,url_new.search)
 
-alert("DOME3")
+// alert("DOME3")
 let checking_overlay=document.getElementById("checking_overlay");
 let checkingsts=document.getElementById("checkingsts");
 if (id_new=="" || id_new==null){
@@ -18,7 +18,6 @@ firebase.database().ref('session/' + id_new).on('value', function(snapshot) {
 
     } else {
         checkingsts.innerHTML="id not found rediracting to homepage";
-        
         setTimeout(function(){document.getElementById("homepage").click();},3000);
     }
 });
